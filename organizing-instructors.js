@@ -1,16 +1,16 @@
 const organizeInstructors = function(instructors) {
   let sortedInstructors = {};
-  //evaluate array of objects by course and create keys for "sortedInstructors"
+  let valueInInstructors = '';
   for (let i = 0; i < instructors.length; i++) {
-    //if key element exist add name to that key; if it doesnt create new key and add name to that key
-    if (instructors[i].course in sortedInstructors) {
-      sortedInstructors.instructors[i].course.push(instructors[i].name)
+    valueInInstructors = instructors[i].course;
+    if (sortedInstructors[valueInInstructors] === undefined) {
+      sortedInstructors[valueInInstructors] = [];
+      sortedInstructors[valueInInstructors].push(instructors[i].name);
     } else {
-      sortedInstructors.instructors[i].course = [];
-      sortedInstructors.instructors[i].course.push(instructors[i].name)
-
+      sortedInstructors[valueInInstructors].push(instructors[i].name);
     }
   }
+  return sortedInstructors;
 };
 
 console.log(organizeInstructors([
